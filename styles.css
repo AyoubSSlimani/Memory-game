@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#container-card {
+    width: 500px;
+    height: 800px;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 164px;
+    height: 265px;
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+.card img {
+    width: 164px;
+    height: 265px;
+}
+
+.hidden {
+    background-color: red;
+    background-color: black;
+    /* visibility: hidden; */
+}
+
+#start-game {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* .card img::before {
+    background-color: red;
+} */
