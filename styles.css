@@ -1,41 +1,115 @@
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container-button {
+    display: flex;
+    align-content: left;
+    width: 64%;
+}
+
+#container-button #start-and-stop {
+    margin-left: auto
+}
+
+#container-button #chrono {
+    align-self: center;
+    margin-left: auto;
+}
+
+#chrono {
+    display: flex;
+}
+
+#start-and-stop {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.easy {
+    background-color: #86D293;
+    color: white;
+    cursor: pointer;
+}
+
+.easy:hover {
+    background-color: #65cd77;
+}
+
+.medium {
+    background-color: #FF885B;
+    color: white;
+    cursor: pointer;
+}
+
+.medium:hover {
+    background-color: #f26d3c;
+}
+
+.hard {
+    background-color: #C7253E;
+    color: white;
+    cursor: pointer;
+}
+
+.hard:hover {
+    background-color: #be142d;
 }
 
 #container-card {
-    width: 500px;
-    height: 800px;
-    border: 2px solid black;
+    padding-top: 20px;
+    width: 900px;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .card {
-    width: 164px;
-    height: 265px;
+    width: 130px;
+    height: 230px;
     border: 1px solid green;
     cursor: pointer;
 }
 
 .card img {
-    width: 164px;
-    height: 265px;
+    width: 130px;
+    height: 230px;
 }
 
 .hidden {
-    background-color: red;
     background-color: black;
-    /* visibility: hidden; */
 }
 
-#start-game {
+#start-game, #stop {
     width: 100px;
     height: 40px;
     cursor: pointer;
 }
 
-/* .card img::before {
-    background-color: red;
-} */
+.colorBtn {
+    border: 3px solid yellow;
+}
+
+.again {
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+}
+
+.again:hover {
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.cacher {
+    display: none;
+}
