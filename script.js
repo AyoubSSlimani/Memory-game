@@ -27,18 +27,18 @@ const chrono = () => {
     containerCard.appendChild(minuteur);
 }
 
-// Permet de cibler une seule carte et la retourner
-// cards.forEach((card) => {
-//     const styles = getComputedStyle(card);
-//     card.addEventListener("click", (event) => {
-//         event.target.classList.toggle("hidden");
-//         if(styles.backgroundColor){
-//             event.target.style.removeProperty("background-color");
-//         } else {
-//             event.target.style.backgroundColor = "red";
-//         }
-//     })
-// })
+Permet de cibler une seule carte et la retourner
+cards.forEach((card) => {
+    const styles = getComputedStyle(card);
+    card.addEventListener("click", (event) => {
+        event.target.classList.toggle("hidden");
+        if(styles.backgroundColor){
+            event.target.style.removeProperty("background-color");
+        } else {
+            event.target.style.backgroundColor = "red";
+        }
+    })
+})
 
 // Fonction permettant de mélanger un tableau
 const shuffleImage = (array) => {
