@@ -96,8 +96,21 @@ body {
     border: 3px solid yellow;
 }
 
-.again {
+#end-game {
     position: absolute;
+    border: 2px solid black;
+    width: 400px;
+    height: 300px;
+    left: 35%;
+    top: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: grey;
+    border-radius: 5%;
+}
+
+.again {
     border-radius: 50%;
     width: 150px;
     height: 150px;
@@ -110,6 +123,19 @@ body {
     color: white;
 }
 
+.reset {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+}
+
+.reset:hover {
+    cursor: pointer;
+    background-color: #be142d;
+    color: white;
+}
+
 .cacher {
-    display: none;
+    display: none !important;
 }

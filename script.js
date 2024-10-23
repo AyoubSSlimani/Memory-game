@@ -3,13 +3,25 @@ const startGame = document.querySelector("#start-game");
 const easyBtn = document.querySelector(".easy");
 const mediumBtn = document.querySelector(".medium");
 const hardBtn = document.querySelector(".hard");
+const containerEndGame = document.querySelector("#end-game");
 const againBtn = document.querySelector(".again");
+const resetBtn = document.querySelector(".reset");
 const stopBtn = document.querySelector("#stop");
 const chrono = document.querySelector("#chrono");
 const seconde = document.querySelector(".seconde");
 const zeroSeconde = document.querySelector(".zero-seconde");
 const zeroMinute = document.querySelector(".zero-minute");
 const minute = document.querySelector(".minute");
+
+// variable pour le son
+const correctSound = new Audio("sounds/correct.mp3");
+const wrongSound = new Audio("sounds/wrong.mp3");
+const clearGameSound = new Audio("sounds/clearGame.mp3");
+const startGameSound = new Audio("sounds/startGame.mp3");
+const stopSound = new Audio("sounds/stop.mp3");
+const easyModeSound = new Audio("sounds/easyMode.mp3");
+const mediumModeSound = new Audio("sounds/mediumMode.mp3");
+const hardModeSound = new Audio("sounds/hardMode.mp3");
 
 //Par défaut le jeu est en difficulté easy
 //Séléction de la difficulté du jeu
@@ -47,20 +59,21 @@ const launchGame = () => {
 }
 
 startGame.addEventListener("click", () => {
+    startGameSound.play();
+    console.log(gameStart);
     startGame.classList.toggle("cacher");
     launchGame();
 })
 
 stopBtn.addEventListener("click", () => {
+    stopSound.play();
     gameStop = false;
     gameStart = false;
     startGame.classList.toggle("cacher");
 
     resetChrono();
 
-
     stopBtn.classList.toggle("cacher");
-    // againBtn.classList.toggle("cacher");
     deletAndReset();
     if(containerCard.childElementCount === 0) {
         colorCurrentBtn(easyBtn);
@@ -121,57 +134,68 @@ const modeGame = (modeId, arrayImageDifficulty) => {
 //     // currentMode = "";
 // })
 
-if(!gameStart){
-    easyBtn.addEventListener("click", () => {
-        if(lastClickButton !== easyBtn) {
+easyBtn.addEventListener("click", () => {
+    if(lastClickButton !== easyBtn) {
+        easyModeSound.play();
+        if(!gameStart){
             colorCurrentBtn(easyBtn);
             deletAndReset();
             modeGame(easyBtn, copyArrayImages.slice(0, 12));
         }
-        lastClickButton = easyBtn;
-        if(gameStop) {
-            gameStart = false;
-            stopBtn.classList.toggle("cacher");
-            startGame.classList.toggle("cacher");
-            resetChrono();
-        }
-    })
-}
 
-if(!gameStart){
-    mediumBtn.addEventListener("click", () => {
-        if(lastClickButton !== mediumBtn) {
+            lastClickButton = easyBtn;
+            if(gameStop) {
+                gameStart = false;
+                stopBtn.classList.toggle("cacher");
+                startGame.classList.toggle("cacher");
+                resetChrono();
+            }
+    }
+        
+})
+
+
+
+mediumBtn.addEventListener("click", () => {
+    if(lastClickButton !== mediumBtn) {
+        mediumModeSound.play();
+        if(!gameStart){
             colorCurrentBtn(mediumBtn);
             deletAndReset();
             modeGame(mediumBtn, copyArrayImages.slice(0, 16));
-        }
-        lastClickButton = mediumBtn;
-        if(gameStop) {
-            gameStart = false;
-            stopBtn.classList.toggle("cacher");
-            startGame.classList.toggle("cacher");
-            resetChrono();
-        }
-    })
-}
 
-if(!gameStart){
-    hardBtn.addEventListener("click", () => {
-        if(lastClickButton !== hardBtn) {
+            lastClickButton = mediumBtn;
+            if(gameStop) {
+                gameStart = false;
+                stopBtn.classList.toggle("cacher");
+                startGame.classList.toggle("cacher");
+                resetChrono();
+            }
+        }
+    }
+})
+
+
+
+hardBtn.addEventListener("click", () => {
+    if(lastClickButton !== hardBtn) {
+        hardModeSound.play();
+        if(!gameStart){
             colorCurrentBtn(hardBtn);
             deletAndReset();
             modeGame(hardBtn, copyArrayImages);
-        }
-        lastClickButton = hardBtn;
-        if(gameStop) {
-            gameStart = false;
-            stopBtn.classList.toggle("cacher");
-            startGame.classList.toggle("cacher");
-            resetChrono();
-        }
-    })
-}
 
+
+            lastClickButton = hardBtn;
+            if(gameStop) {
+                gameStart = false;
+                stopBtn.classList.toggle("cacher");
+                startGame.classList.toggle("cacher");
+                resetChrono();
+            }
+        }
+    }
+})
 
 //Fonction qui permet de changer le border du niveau de difficulté actuel
 const colorCurrentBtn = (currentBtn) => {
@@ -272,6 +296,7 @@ const cardEven = (thisImage, thisCard, arrayImage) => {
         idImageTemp = parseInt(thisImage.id);
         thisImage.style.display = "";
     } else if(jetonClick === 1 && thisImage.src === imageTemp && !thisCard.classList.contains("cleared")) {
+        correctSound.play();
         thisImage.style.display = "";
         idImageTemp2 += parseInt(thisImage.id);
         let previousCard = document.getElementById(`${idImageTemp}`);
@@ -280,12 +305,14 @@ const cardEven = (thisImage, thisCard, arrayImage) => {
         thisCard.classList.add("cleared");
         idCardArray.push(idImageTemp, idImageTemp2);
         if(idCardArray.length === arrayImage.length){
+            correctSound.play();
             setTimeout(() => {
                 finishGame();
             }, 500);
         }
         resetParameterCardEven();
     } else if(jetonClick === 1 && !thisCard.classList.contains("cleared")) {
+        wrongSound.play();
         jetonClick++;
         idImageTemp2 = parseInt(thisImage.id);
         thisImage.style.display = "";
@@ -311,25 +338,51 @@ const resetParameterCardEven = () => {
 
 //Fonction qui vérifie si toutes les cartes ont été trouvé 
 const finishGame = (arrayId, arrayCard) => {
-        gameStart = false;
+        clearGameSound.play();
         gameStop = false;
         stopBtn.classList.toggle("cacher");
 
         alert("Félicitation vous avez fini la partie!");
         againBtn.classList.toggle("cacher");
+        resetBtn.classList.toggle("cacher");
+        containerEndGame.classList.toggle("cacher");
 
         registerTime();
         console.log(bestScore);
+        zeroSeconde.classList.toggle("cacher");
         resetChrono();
 }
 
 againBtn.addEventListener("click", () => {
+    startGameSound.play();
+    gameStart = false;
     againBtn.classList.toggle("cacher");
+    resetBtn.classList.toggle("cacher");
+    containerEndGame.classList.toggle("cacher");
     stopBtn.classList.toggle("cacher");
     gameStart = true;
     gameStop = true;
     deletAndReset();
     relancerUnMode(currentMode);
+})
+
+resetBtn.addEventListener("click", () => {
+    stopSound.play();
+    gameStart = false;
+    gameStop = false;
+    againBtn.classList.toggle("cacher");
+    resetBtn.classList.toggle("cacher");
+    containerEndGame.classList.toggle("cacher");
+    startGame.classList.toggle("cacher");
+    resetChrono();
+    
+    deletAndReset();
+    if(containerCard.childElementCount === 0) {
+        colorCurrentBtn(easyBtn);
+        currentModeClick = 0;
+        modeGame(easyBtn, copyArrayImages.slice(0, 12));
+        lastClickButton = easyBtn;
+    }
 })
 
 
@@ -389,15 +442,23 @@ const time = () => {
 const resetChrono = () => {
     clearInterval(minuteur);
 
+    if(!gameStart && lastClickButton !== null){
+        zeroSeconde.classList.toggle("cacher");
+        if(sec < 10 || sec >= 10){
+            zeroSeconde.classList.toggle("cacher");
+            if(sec >= 10){
+                zeroSeconde.classList.toggle("cacher");
+            }
+        }
+    } 
+
     minute.textContent = "0";
     seconde.textContent = "0";
 
     sec = 0;
     min = 0;
 
-    if(!gameStart && sec !== 0){
-        zeroSeconde.classList.toggle("cacher");
-    } 
+
 }
 
 // Fonction qui permet d'enregistrer le score sous le bon format
@@ -412,15 +473,13 @@ const registerTime = () => {
 
 
 //Ce qu'il me reste à faire dans ce projet 
-// Tant que je n'ai pas appuyer sur démarrer le jeu je ne peut pas retourner sur les cartes
 // Mettre une limite de temps pour réaliser le jeu
+// Pour chaque mode aller sur un generateur de voix et mettre une voix en fonction de 1-2sec
 // -En démarrant le jeu je bloque les autres difficultés, un bouton "arreter apparait" si j'appuie dessus les autres modes sont debloquées
-// -Mettre un chrono qui se lance quand on clique sur démarrer le jeu
-// -BLoquer les autres modes quand le chrono est lancé
-// -Arreter le chrono une fois toutes les cartes trouvé (enregistrer le temps en fonction de la difficultés)
 // -Mettre ses temps dans un localStorage et permettre à l'utilisateur de pouvoir vider le localStorage
 // -Mettre un son quand on trouve 2 paires, autre son quand on se trompe, un son quand la partie débute et un son quand la partie se termine
 // -L'utilisateur peut choisir de couper le son quand il clique sur l'icone son (barrer l'icone)
+// -Faire le responsive
 // -Ajouter des règles pour guider l'utilisateur
 // -Ajouter un effet css qui retourne les cartes de façon styler
 // -Décorer la carte face caché avec un logo de point d'intérrogation ou autre
@@ -431,4 +490,4 @@ const registerTime = () => {
 
 //BUG A FIX
 // -En medium j'ai bug de click quand je click sur plusieurs cartes
-// -Si j'appuie sur le bouton stop alors que j'ai trouvé toutes les cartes le bouton recommencer reste affiché
+// -Quand je retourne toutes les cartes le bouton recommencer apparait mais si je change de difficulté le bouton recommencer reste visible
