@@ -61,30 +61,6 @@ body {
     background-color: #be142d;
 }
 
-#container-card {
-    padding-top: 20px;
-    width: 900px;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    width: 130px;
-    height: 230px;
-    border: 1px solid green;
-    cursor: pointer;
-}
-
-.card img {
-    width: 130px;
-    height: 230px;
-}
-
-.hidden {
-    background-color: black;
-}
 
 #start-game, #stop {
     width: 100px;
