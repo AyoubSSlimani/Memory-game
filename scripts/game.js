@@ -24,11 +24,25 @@ document.querySelector('.start').addEventListener('click', () => {
     initializeGame();
 });
 
+document.querySelector('.restart').addEventListener('click', () => {
+    document.querySelector('.game-status-container').style.display = 'none';
+    document.querySelector('.memory-board').remove();
+
+    initializeGame();
+});
+
+
 document.querySelector('.give-up').addEventListener('click', () => {
     document.querySelector('.memory-board').remove();
     document.querySelector('.give-up').style.display = 'none';
     document.querySelector('.start').style.display = 'block';
 });
+
+document.querySelector(".menu").addEventListener('click', () =>  {
+    document.querySelector('.memory-board').remove();
+    document.querySelector('.give-up').style.display = 'none';
+    document.querySelector('.start').style.display = 'block';
+})
 
 function initializeGame() {
     const boardGame = new BoardGame(arrayImages);

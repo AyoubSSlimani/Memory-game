@@ -2,13 +2,17 @@ import Card from './card.js';
 
 
 class BoardGame {
+    MAX_TIME = 60
     constructor(images) {
         this.matchedCards = [];
         this.locked = false;
+        
         this.images = this.getImagesByLevel(images);
         this.images = this.images.concat(this.images);
         this.cards = [];
-        this.timer = 60;
+
+        this.timer = this.MAX_TIME;
+        this.timerInterval;
     }
 
     create() {
@@ -17,6 +21,8 @@ class BoardGame {
 
         this.cards = this.images.map(img => new Card(img));
         this.cards.forEach(card => board.appendChild(card.element));
+
+        document.getElementById('timer').value = this.timer;
         return board;
     }
 
@@ -84,7 +90,7 @@ class BoardGame {
 
     updateTimer() {
         const timer = document.getElementById('timer');
-        setInterval(() => {
+        this.timerInterval = setInterval(() => {
             timer.value = parseInt(timer.value) - 1;
             this.timer = parseInt(timer.value);
             this.updateGameStatus();
@@ -92,10 +98,14 @@ class BoardGame {
     }
 
     stopTimer() {
-        clearInterval(this.timer);
+        document.getElementById('timer').value = this.MAX_TIME;
+        clearInterval(this.timerInterval);
     }
 
     isGameOver() {
+        console.log("timer", this.timer);
+        console.log("matchedCards", this.matchedCards.length);
+        console.log("cards", this.cards.length);
         return this.timer === 0 && this.matchedCards.length !== this.cards.length;
     }
 }
