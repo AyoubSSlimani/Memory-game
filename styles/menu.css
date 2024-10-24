@@ -1,0 +1,78 @@
+.menu-container {
+    width: var(--container-width);
+    
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    text-align: center;
+    
+    margin: 20px;
+    padding: var(--padding);
+}
+
+.level label, .timer label {
+    display: block;
+    font-size: var(--font-large);
+    margin-bottom: 10px;
+}
+
+.level select {
+    background: var(--input-background);
+    border: none;
+    color: var(--text-color);
+    padding: 10px;
+    font-size: var(--font-small);
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 30px;
+    width: 100%;
+    transition: background var(--transition-time) ease;
+}
+
+.level select:hover, .level select:focus {
+    background: var(--input-hover-background);
+}
+
+.timer input {
+    background: var(--input-background);
+    border: none;
+    color: var(--text-color);
+    padding: 10px;
+    font-size: var(--font-small);
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    margin-top: 10px;
+    transition: background var(--transition-time) ease;
+}
+
+.timer input:hover, .timer input:focus {
+    background: var(--input-hover-background);
+}
+
+button.start {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    color: var(--text-color);
+    font-size: var(--font-medium);
+    padding: 12px 0;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background var(--transition-time) ease, transform 0.2s;
+}
+
+button.start:hover {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    box-shadow: 0 10px 20px var(--button-hover-shadow);
+}
+
+button.start:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-color), 0 0 30px var(--primary-color), 0 0 60px var(--secondary-color);
+}

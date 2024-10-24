@@ -1,91 +1,52 @@
+:root {
+    /* Color Variables */
+    --primary-color: #29b6f6;
+    --secondary-color: #1c92d2;
+    --background-dark: #1a1a1a;
+    --background-light: #2c2c2c;
+    --card-background: #ddd;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --text-color: #fff;
+    --input-background: #222;
+    --input-hover-background: #333;
+    --button-hover-shadow: rgba(0, 0, 0, 0.5);
+    
+    /* Size Variables */
+    --container-width: 350px;
+    --card-size: 130px;
+    --padding: 40px;
+    --border-radius: 12px;
+
+    /* Font Sizes */
+    --font-large: 1.2rem;
+    --font-medium: 1.1rem;
+    --font-small: 1rem;
+
+    /* Transition & Animation */
+    --transition-time: 0.3s;
+    --flip-time: 0.8s;
+
+    /* Shadows */
+    --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    --card-shadow-hover: 0 4px 8px var(--card-shadow), 0 6px 20px var(--card-shadow);
+
+    /* Others */
+    --perspective: 1000px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+    color: #fff;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-}
-
-#container-button {
-    display: flex;
-    align-content: left;
-    width: 64%;
-}
-
-#container-button #start-and-stop {
-    margin-left: auto
-}
-
-#container-button #chrono {
-    align-self: center;
-    margin-left: auto;
-}
-
-#chrono {
-    display: flex;
-}
-
-#start-and-stop {
-    width: 30%;
-    display: flex;
-    justify-content: space-around;
-}
-
-
-.easy {
-    background-color: #86D293;
-    color: white;
-    cursor: pointer;
-}
-
-.easy:hover {
-    background-color: #65cd77;
-}
-
-.medium {
-    background-color: #FF885B;
-    color: white;
-    cursor: pointer;
-}
-
-.medium:hover {
-    background-color: #f26d3c;
-}
-
-.hard {
-    background-color: #C7253E;
-    color: white;
-    cursor: pointer;
-}
-
-.hard:hover {
-    background-color: #be142d;
-}
-
-
-#start-game, #stop {
-    width: 100px;
-    height: 40px;
-    cursor: pointer;
-}
-
-.colorBtn {
-    border: 3px solid yellow;
-}
-
-.again {
-    position: absolute;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    border: 2px solid white;
-}
-
-.again:hover {
-    cursor: pointer;
-    background-color: green;
-    color: white;
-}
-
-.cacher {
-    display: none;
+    height: 100vh;
 }

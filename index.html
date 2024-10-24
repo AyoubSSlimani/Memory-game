@@ -7,32 +7,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/menu.css">
 </head>
 
 <body>
-    <div id="container-button">
-        <button class="easy">Easy</button>
-        <button class="medium">Medium</button>
-        <button class="hard">Hard</button>
+    <div class="menu-container">
+        <div class="level">
+            <label for="level">Niveau de difficulté</label>
+            <select name="level" id="level">
+                <option value="easy">Facile</option>
+                <option value="medium">Moyen</option>
+                <option value="hard">Difficile</option>
+            </select>
 
-        <div id="chrono">
-            <p class="zero-minute">0</p>
-            <p class="minute">0</p>
-            <p>:</p>
-            <p class="zero-seconde">0</p>
-            <p class="seconde">0</p>
-        </div>
+            <!-- timer -->
+            <div class="timer">
+                <label for="timer">Temps</label>
+                <input type="number" name="timer" id="timer" value="60">
+            </div>
 
-        <div id="start-and-stop">
-            <button id="stop" class="cacher">Stop</button>
-            <button id="start-game">Démarrer le jeu</button>
+            <!-- start/end game -->
+            <button class="start">Commencer</button>
         </div>
     </div>
 
-
-    <div class="memory-board"></div>
-
-    <button class="again cacher">Recommencer</button>
     <script src="scripts/game.js" type="module"></script>
 </body>
 
