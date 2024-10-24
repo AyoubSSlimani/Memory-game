@@ -72,7 +72,27 @@ button.start:hover {
     box-shadow: 0 10px 20px var(--button-hover-shadow);
 }
 
-button.start:focus {
+button.start:focus
+button.give-up:focus {
     outline: none;
-    box-shadow: 0 0 10px var(--primary-color), 0 0 30px var(--primary-color), 0 0 60px var(--secondary-color);
+}
+
+button.give-up {
+    display: none;
+    background: linear-gradient(135deg, #f44336 0%, #ff1744 100%);
+    border: none;
+    color: var(--text-color);
+    font-size: var(--font-medium);
+    padding: 12px 0;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: background var(--transition-time) ease, transform 0.2s;
+}
+
+button.give-up:hover {
+    background: linear-gradient(135deg, #ff1744 0%, #f44336 100%);
+    box-shadow: 0 10px 20px var(--button-hover-shadow);
 }

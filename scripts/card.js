@@ -1,6 +1,6 @@
 class Card {
-    constructor(imageSrc) {
-        this.imageSrc = imageSrc;
+    constructor(image) {
+        this.image = image;
         this.element = this.create();
     }
 
@@ -9,7 +9,7 @@ class Card {
         card.classList.add('memory-card');
 
         card.innerHTML = `
-            <img class="front-face hidden" src="${this.imageSrc}" alt="Memory Card">
+            <img class="front-face hidden" src="${this.image}" alt="Memory Card">
             <span class="back-face"></span>
         `;
         return card;
@@ -33,11 +33,11 @@ class Card {
     }
 
     match(card) {
-        this.imageSrc === card.imageSrc ? this.lock() : this.unflip();
+        this.image === card.image ? this.lock() : this.unflip();
     }
 
     equals(card) {
-        return this.imageSrc === card.imageSrc;
+        return this.image === card.image;
     }
 }
 
