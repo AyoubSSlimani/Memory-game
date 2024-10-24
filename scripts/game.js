@@ -18,8 +18,16 @@ const arrayImages = [
 
 document.querySelector('.start').addEventListener('click', () => {
     document.querySelector('.start').style.display = 'none';
+    document.getElementById('level').setAttribute('disabled', 'true');
+
     document.querySelector('.give-up').style.display = 'block';
     initializeGame();
+});
+
+document.querySelector('.give-up').addEventListener('click', () => {
+    document.querySelector('.memory-board').remove();
+    document.querySelector('.give-up').style.display = 'none';
+    document.querySelector('.start').style.display = 'block';
 });
 
 function initializeGame() {
@@ -32,5 +40,5 @@ function initializeGame() {
     document.body.appendChild(board);
 
     boardGame.eventHandler();
-    boardGame.startTimer();
+    boardGame.updateTimer();
 }

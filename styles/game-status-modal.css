@@ -1,0 +1,89 @@
+.game-status-container {
+  display: none;
+  position: fixed;
+
+  padding-top: 100px;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  text-align: center;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.game-status-content {
+  backdrop-filter: blur(10px);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+
+  margin: auto;
+  padding: var(--padding);
+
+  width: 483px;
+  transform: translateY(50%);
+
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+}
+
+.game-status-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.game-status-content button.restart {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  border: none;
+  color: var(--text-color);
+  font-size: var(--font-medium);
+  padding: 12px 0;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: background var(--transition-time) ease, transform 0.2s;
+}
+
+.game-status-content button.restart:hover {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--primary-color) 100%
+  );
+  box-shadow: 0 10px 20px var(--button-hover-shadow);
+}
+
+.game-status-content button.menu {
+  background: linear-gradient(135deg, #f44336 0%, #ff1744 100%);
+  border: none;
+  color: var(--text-color);
+  font-size: var(--font-medium);
+  padding: 12px 0;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: background var(--transition-time) ease, transform 0.2s;
+}
+
+.game-status-content button.menu:hover {
+  background: linear-gradient(135deg, #ff1744 0%, #f44336 100%);
+  box-shadow: 0 10px 20px var(--button-hover-shadow);
+}

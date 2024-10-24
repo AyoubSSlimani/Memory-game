@@ -8,7 +8,7 @@ class BoardGame {
         this.images = this.getImagesByLevel(images);
         this.images = this.images.concat(this.images);
         this.cards = [];
-        this.timer = 0;
+        this.timer = 60;
     }
 
     create() {
@@ -63,10 +63,31 @@ class BoardGame {
         });
     }
 
-    startTimer() {
+    updateGameStatus() {
+        const gameStatus = document.getElementById('game-status');
+        const modal = document.querySelector('.game-status-container');
+
+        if (this.isGameOver()) {
+            gameStatus.innerText = 'Game Over !';
+            gameStatus.style.color = '#f44336';
+            modal.style.display = 'block';
+            this.stopTimer();
+        }
+        else if (this.matchedCards.length === this.cards.length) {
+            gameStatus.innerText = 'You Win!';
+            gameStatus.style.color = 'green';
+            modal.style.display = 'block';
+            this.stopTimer();
+        }
+
+    }
+
+    updateTimer() {
         const timer = document.getElementById('timer');
-        this.timer = setInterval(() => {
+        setInterval(() => {
             timer.value = parseInt(timer.value) - 1;
+            this.timer = parseInt(timer.value);
+            this.updateGameStatus();
         }, 1000);
     }
 
