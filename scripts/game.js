@@ -16,6 +16,8 @@ const arrayImages = [
     "../assets/images/SatoMask.png",
 ]
 
+let boardGame;
+
 document.querySelector('.start').addEventListener('click', () => {
     document.querySelector('.start').style.display = 'none';
     document.getElementById('level').setAttribute('disabled', 'true');
@@ -26,27 +28,35 @@ document.querySelector('.start').addEventListener('click', () => {
 
 document.querySelector('.restart').addEventListener('click', () => {
     document.querySelector('.game-status-container').style.display = 'none';
+    document.getElementById('level').setAttribute('disabled', 'true');
     document.querySelector('.memory-board').remove();
 
     initializeGame();
 });
 
-
 document.querySelector('.give-up').addEventListener('click', () => {
     document.querySelector('.memory-board').remove();
     document.querySelector('.give-up').style.display = 'none';
     document.querySelector('.start').style.display = 'block';
+
+    document.getElementById('level').removeAttribute('disabled');
+    boardGame.stopTimer();
 });
 
 document.querySelector(".menu").addEventListener('click', () =>  {
     document.querySelector('.memory-board').remove();
     document.querySelector('.give-up').style.display = 'none';
     document.querySelector('.start').style.display = 'block';
+
+    document.querySelector('.game-status-container').style.display = 'none';
+    document.getElementById('level').removeAttribute('disabled');
+    boardGame.stopTimer();
 })
 
 function initializeGame() {
-    const boardGame = new BoardGame(arrayImages);
+    boardGame = new BoardGame(arrayImages);
     boardGame.shuffle();
+
     const board = boardGame.create();
     const columns = Math.ceil(Math.sqrt(boardGame.cards.length));
     

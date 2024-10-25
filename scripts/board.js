@@ -85,7 +85,6 @@ class BoardGame {
             modal.style.display = 'block';
             this.stopTimer();
         }
-
     }
 
     updateTimer() {
@@ -99,13 +98,11 @@ class BoardGame {
 
     stopTimer() {
         document.getElementById('timer').value = this.MAX_TIME;
+        this.timer = this.MAX_TIME;
         clearInterval(this.timerInterval);
     }
 
     isGameOver() {
-        console.log("timer", this.timer);
-        console.log("matchedCards", this.matchedCards.length);
-        console.log("cards", this.cards.length);
         return this.timer === 0 && this.matchedCards.length !== this.cards.length;
     }
 }
